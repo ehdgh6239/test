@@ -11,13 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // 예시코드
-      // models.Cloth.hasMany(models.Guest, { foreignKey: "guest_id" });
-      // models.Cloth.hasMany(models.Owner, { foreignKey: "owner_id" });
-      models.Cloth.belongsTo(models.Guest, { foreignKey: "guest_id" ,targetKey: 'guest_id'  });
-      models.Cloth.belongsTo(models.Owner, { foreignKey: "owner_id", targetKey: 'owner_id'  });
+      models.Cloth.belongsTo(models.Guest, { foreignKey: "guest_id"});
+      models.Cloth.belongsTo(models.Owner, { foreignKey: "owner_id"});
     }
   }
   Cloth.init({
+    // likesId: {
+    //   primaryKey: true,
+    //   type: DataTypes.INTEGER,
+    // },
     cloth_id: DataTypes.INTEGER,
     guest_id: DataTypes.STRING,
     owner_id: DataTypes.STRING,

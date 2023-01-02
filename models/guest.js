@@ -11,17 +11,21 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // 예시코드
-      models.Guest.hasMany(models.Cloth, { foreignKey: "guest_id" ,sourceKey: 'guest_id'  });
-      models.Guest.hasMany(models.Review, { foreignKey: "guest_id", sourceKey: 'guest_id'  });
+      models.Guest.hasMany(models.Cloth, { foreignKey: "guest_id" });
+      models.Guest.hasMany(models.Review, { foreignKey: "guest_id"});
     }
   }
   Guest.init({
-    guest_id: DataTypes.STRING,
+    guest_id: {
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+    },
+    // guest_id: DataTypes.STRING,
     login_id: DataTypes.STRING,
-    name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    pw: DataTypes.STRING,
-    point: DataTypes.INTEGER
+    login_pw: DataTypes.STRING,
+    guest_name: DataTypes.STRING,
+    guest_email: DataTypes.STRING,
+    guest_point: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Guest',

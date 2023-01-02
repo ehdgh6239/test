@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const db = require('.');
 module.exports = (sequelize, DataTypes) => {
   class Owner extends Model {
     /**
@@ -11,17 +12,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // 예시코드
-      models.Owner.hasMany(models.Cloth, { foreignKey: "owner_id" ,sourceKey: 'owner_id'  });
-      models.Owner.hasMany(models.Review, { foreignKey: "owner_id", sourceKey: 'owner_id'  });
+      models.Owner.hasMany(models.Cloth, { foreignKey: "owner_id" });
+      models.Owner.hasMany(models.Review, { foreignKey: "owner_id" });
     }
   }
   Owner.init({
-    owner_id: DataTypes.STRING,
+    owner_id: {
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+    },
     login_id: DataTypes.STRING,
-    pw: DataTypes.STRING,
+    login_pw: DataTypes.STRING,
     owner_name: DataTypes.STRING,
     owner_email: DataTypes.STRING,
-    point: DataTypes.INTEGER
+    owner_point: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Owner',

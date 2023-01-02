@@ -11,12 +11,13 @@ module.exports = {
       },
       guest_id: {
         type: Sequelize.STRING
+        
       },
       owner_id: {
         type: Sequelize.STRING
       },
       tel: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       address: {
         type: Sequelize.STRING
@@ -25,6 +26,9 @@ module.exports = {
         type: Sequelize.STRING
       },
       img: {
+        type: Sequelize.STRING
+      },
+      status: {
         type: Sequelize.STRING
       },
       createdAt: {

@@ -12,16 +12,16 @@ module.exports = {
       login_id: {
         type: Sequelize.STRING
       },
-      name: {
+      guest_name: {
         type: Sequelize.STRING
       },
-      email: {
+      guest_email: {
         type: Sequelize.STRING
       },
-      pw: {
+      login_pw: {
         type: Sequelize.STRING
       },
-      point: {
+      guest_point: {
         type: Sequelize.INTEGER
       },
       createdAt: {

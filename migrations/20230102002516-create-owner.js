@@ -12,7 +12,7 @@ module.exports = {
       login_id: {
         type: Sequelize.STRING
       },
-      pw: {
+      login_pw: {
         type: Sequelize.STRING
       },
       owner_name: {
@@ -21,7 +21,7 @@ module.exports = {
       owner_email: {
         type: Sequelize.STRING
       },
-      point: {
+      owner_point: {
         type: Sequelize.INTEGER
       },
       createdAt: {

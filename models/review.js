@@ -11,11 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // 예시코드
-      models.Review.belongsTo(models.Guest, { foreignKey: "guest_id" ,targetKey: 'guest_id'  });
-      models.Review.belongsTo(models.Owner, { foreignKey: "owner_id", targetKey: 'owner_id'  });
+      models.Review.belongsTo(models.Guest, { foreignKey: "guest_id" });
+      models.Review.belongsTo(models.Owner, { foreignKey: "owner_id"});
     }
   }
   Review.init({
+        // likesId: {
+    //   primaryKey: true,
+    //   type: DataTypes.INTEGER,
+    // },
     review_id: DataTypes.INTEGER,
     guest_id: DataTypes.STRING,
     owner_id: DataTypes.STRING,
