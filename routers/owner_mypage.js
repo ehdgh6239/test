@@ -26,7 +26,8 @@ router.get('/mypage/owner', async (req, res) => {
         const ownerPoint = owner.owner_point
     
         return res.json({"ownerName" : ownerName, "ownerPoint" : ownerPoint});
-      } catch (err) {
+      } 
+      catch (err) {
         return res.status(400).send({ errorMessage: "실패하였습니다." });
       }
     });

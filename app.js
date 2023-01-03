@@ -7,6 +7,7 @@ const guestLoginRouter = require("./routers/guest_login");
 const ownerLoginRouter = require("./routers/owner_login");
 const guestMypageRouter = require("./routers/guest_mypage");
 const ownerMypageRouter = require("./routers/owner_mypage");
+const ownerStatusRouter = require("./routers/laundry_status");
 
 // const ownerRegisterRouter = require("./routers/owner_register");
 
@@ -20,7 +21,8 @@ app.use("/api", express.urlencoded({extended: false}), [
     guestLoginRouter,
     ownerLoginRouter,
     guestMypageRouter,
-    ownerMypageRouter
+    ownerMypageRouter,
+    ownerStatusRouter
   ]);
 
 app.get('/', (req, res) => {
@@ -50,6 +52,10 @@ app.get('/mypage/guest', (req, res) => {
 });
 app.get('/mypage/owner', (req, res) => {
     res.sendFile(__dirname + "/assets/owner_mypage.html");
+});
+
+app.get('/laundry/status/owner', (req, res) => {
+    res.sendFile(__dirname + "/assets/laundry_status.html");
 });
 
 app.listen(process.env.PORT, () => {
