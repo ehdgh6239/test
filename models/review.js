@@ -16,11 +16,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Review.init({
-        // likesId: {
-    //   primaryKey: true,
-    //   type: DataTypes.INTEGER,
-    // },
-    review_id: DataTypes.INTEGER,
+    review_id: {
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+    },
+    // review_id: DataTypes.INTEGER,
     guest_id: DataTypes.STRING,
     owner_id: DataTypes.STRING,
     rate: DataTypes.STRING,

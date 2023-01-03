@@ -34,7 +34,7 @@ router.post("/login/guest", async (req, res) => {
 
     res.cookie("token", token);
 
-    return res.json({ token: token });
+    return res.json({ "token": token });
   } catch (err) {
     return res.status(400).send({ errorMessage: "로그인에 실패하였습니다." });
   }

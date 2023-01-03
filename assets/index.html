@@ -58,8 +58,35 @@
 
   <body>
     <div>
-      <button type="button" class="btn btn-primary btn-lg">손님</button>
-      <button type="button" class="btn btn-secondary btn-lg">사장님</button>
+      <button 
+      type="button"
+      class="btn btn-primary btn-lg"
+      onclick="window.location.replace('/login/guest')">
+      손님
+      </button>
+      
+      <button type="button"
+       class="btn btn-secondary btn-lg"
+       onclick="window.location.replace('/login/owner')">
+       사장님</button>
+
+       <button type="button"
+       class="btn btn-secondary btn-lg"
+       onclick="signOut()">
+       로그아웃</button>
     </div>
   </body>
 </html>
+
+<script>
+
+  function signOut() {
+if ( confirm("로그아웃 하시겠습니까?") ) { 
+alert("확인을 누르셨습니다.");
+localStorage.clear();
+window.location.href = "/";
+} else { 
+alert("취소를 누르셨습니다.");
+}
+  };
+</script>

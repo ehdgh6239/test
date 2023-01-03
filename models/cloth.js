@@ -16,11 +16,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Cloth.init({
-    // likesId: {
-    //   primaryKey: true,
-    //   type: DataTypes.INTEGER,
-    // },
-    cloth_id: DataTypes.INTEGER,
+    cloth_id: {
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+    },
     guest_id: DataTypes.STRING,
     owner_id: DataTypes.STRING,
     tel: DataTypes.INTEGER,

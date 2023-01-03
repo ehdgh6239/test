@@ -160,10 +160,10 @@
 
     <script>
       if (localStorage.getItem("token")) {
-        getSelf(function () {
-          alert("이미 로그인이 되어있습니다. 상품 페이지로 이동합니다.");
-          window.location.replace("/goods.html");
-        });
+        // getSelf(function () {
+          alert("이미 로그인이 되어있습니다. 세탁 페이지로 이동합니다.");
+          window.location.replace("/");
+        // });
       }
 
       function sign_in() {
@@ -172,13 +172,15 @@
         $.ajax({
           type: "POST",
           url: "/api/login/owner",
+          dataType: "JSON",
           data: {
-            login_id: login_id,
-            login_pw: login_pw,
+            "login_id": login_id,
+            "login_pw": login_pw,
           },
           success: function (response) {
-            localStorage.setItem("token", response.token);
-            window.location.replace("/goods.html");
+            console.log(response)
+            localStorage.setItem("token", JSON.stringify(response));
+            window.location.replace("/");
           },
           error: function (error) {
             customAlert(error.responseJSON.errorMessage);

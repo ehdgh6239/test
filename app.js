@@ -11,7 +11,7 @@ app.use(express.json());
 
 require('dotenv').config();
 
-app.use("/api", [
+app.use("/api", express.urlencoded({extended: false}), [
     guestRegisterRouter,
     ownerRegisterRouter,
     guestLoginRouter,
@@ -20,6 +20,20 @@ app.use("/api", [
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/assets/index.html");
+});
+
+app.use(express.static("assets"));
+
+app.get('/login/guest', (req, res) => {
+    res.sendFile(__dirname + "/assets/guest_login.html");
+});
+
+app.get('/login/owner', (req, res) => {
+    res.sendFile(__dirname + "/assets/owner_login.html");
+});
+
+app.get('/register/guest', (req, res) => {
+    res.sendFile(__dirname + "/assets/guest_register.html");
 });
 
 app.listen(process.env.PORT, () => {
