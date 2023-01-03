@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script>
+
+    </script>
+    <title>🧺세탁물 상태페이지🧺</title>
+  </head>
+  <style>
+    /* * {
+      height: 100%;
+      width: 100%;
+    } */
+
+    body {
+      background-image: url("https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbdByfl%2FbtrVf7i5Uq5%2FjJ5afu7vrUKkgNGmzP2kAk%2Fimg.jpg");
+      /* linear-gradient(
+        rgba(0, 0, 0, 0.1),
+        rgba(0, 0, 0, 0.9)), */
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    h1 {
+      font-size: 50px;
+      font-weight: bold;
+      color:#fff64f;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    div {
+      height: 100%;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    div > button {
+      width: 150px;
+      height: 80px;
+      margin-left: 100px;
+    }
+
+    img{
+        padding-left: 50px;
+        height: 300px;
+        width: 300px;
+        filter: brightness(110%);
+    }
+    .top-bar{
+        padding-top:100px;
+        padding-bottom: 130px;
+        color:#845EC2;
+    }
+  </style>
+
+
+  <body>
+    <!-- 수거완료 전에는 배송/배송완료 비활성화 -->
+    <nav>
+        <h1 class="top-bar">🧺사장님 주문 상태페이지🧺</h1>
+    </nav>
+    <div>
+      <button 
+      id="button-a"
+      style="background-color: #FF6F91;"
+      type="button"
+      class="btn btn-secondary btn-lg"
+      >
+      수거 완료
+      </button>
+      <!-- onclick="window.location.replace('/login/guest')" -->
+      
+      <button 
+       id="button-b" disabled
+       style="background-color: #FF9671;"
+       type="button"
+       class="btn btn-secondary btn-lg"
+
+       > 
+       배송 시작</button>
+        <!-- onclick="window.location.replace('/login/owner')" -->
+       <button 
+       id="button-c" disabled
+       style="background-color: #FFC75F;"
+       type="button"
+       class="btn btn-secondary btn-lg"
+
+       >
+       배송 완료</button>
+       <!--  onclick="signOut()" -->
+       <img src="https://img.freepik.com/premium-vector/washing-machine-and-laundry-cartoon-washer-linen-baskets-and-cleaning-products-soap-powder-and-conditioner-clothing-wash-vector-concept-illustration-washer-machine-for-housework_102902-4069.jpg?w=740" alt="My Image">
+    
+    </div>
+  </body>
+  <script>
+    var buttonA = document.getElementById("button-a");
+    var buttonB = document.getElementById("button-b");
+    var buttonC = document.getElementById("button-c");
+
+    buttonA.addEventListener("click", function(){
+        buttonB.disabled = false;
+    });
+    buttonB.addEventListener("click", function(){
+        buttonC.disabled = false;
+    });
+
+</script>
+</html>
+
+<script>
+
+  function signOut() {
+if ( confirm("로그아웃 하시겠습니까?") ) { 
+alert("확인을 누르셨습니다.");
+localStorage.clear();
+window.location.href = "/";
+} else { 
+alert("취소를 누르셨습니다.");
+}
+  };
+</script>
