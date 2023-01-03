@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+  crossorigin="anonymous"
+/>
+<title>🧺세탁물 상태페이지🧺</title>
+</head>
+<style>
+*{margin:0; padding:0;}
+html,body{width:100%; height:100%;}
+.form-control{height:40px; width:300px;}
+body{background-image:url("https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbdByfl%2FbtrVf7i5Uq5%2FjJ5afu7vrUKkgNGmzP2kAk%2Fimg.jpg"); background-repeat:no-repeat; background-size:cover;}
+#preview{display:block; width:200px; height:200px; border-raidus:10px; margin-top: 30px;}
+.flex_center{display:flex; align-items:center; justify-content:center; width:100%; height:100%;}
+nav{display:block; float:left;}
+.image-table{padding-left:50px;}
+#button-req{padding-top:10px;}
+</style>
+<body>
+<div class="flex_center">
+  <h1 style="position:absolute; top:100px; text-align:center;">🧺세탁물 상태페이지🧺</h1>
+  <form action="" method="">
+    <nav class="input-table">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">닉네임</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="닉네임" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">전화번호</label>
+        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="전화번호" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">주소</label>
+        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="주소" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">요청사항</label>
+        <input type="email" class="form-control" id="exampleInputEmail4" placeholder="요청사항" aria-describedby="emailHelp">
+      </div>
+    </nav>
+
+    <nav class="image-table">
+      <img id="preview" src="https://web.ipca.pt/sap/wp-content/codevision/resources/images/no-image.jpg">
+      <input type="file" id="inputFile" onchange="readURL(this);" style="display:none;">
+      <label for="inputFile" class="btn btn-secondary" style="width:200px; margin-top: 20px;">사진선택</label>
+      <div id="button-req">
+        <button type="button" class="btn btn-dark" style="width:200px;">신청하기</button>
+      </div>
+    </nav>
+  </form>
+</div>
+</body>
+<script type="text/javascript">
+const input = document.querySelector('#myFileInput');
+const preview = document.querySelector('#myImage');
+
+input.addEventListener('change', updateImageDisplay);
+
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('preview').src = e.target.result;
+    };
+  reader.readAsDataURL(input.files[0]);
+  } else {
+    document.getElementById('preview').src = "https://web.ipca.pt/sap/wp-content/codevision/resources/images/no-image.jpg";
+  }
+}
+</script>
+</html>
