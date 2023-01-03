@@ -61,8 +61,8 @@
       <button 
       type="button"
       class="btn btn-primary btn-lg"
-      onclick="window.location.replace()">
-      세탁물 요청
+      onclick="orderCollect(login_id)">
+      세탁물 수거 요청
       </button>
       
       <button type="button"
@@ -152,6 +152,11 @@ alert("취소를 누르셨습니다.");
   function laundryStatus(login_id){
     window.location.href = `/laundry/status/owner?login_id=${login_id}`
   };
+  
+  function orderCollect(login_id){
+    window.location.href = `/order/owner?login_id=${login_id}`
+  };
+
 </script>
 
   </body>
