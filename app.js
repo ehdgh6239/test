@@ -36,6 +36,10 @@ app.get('/register/guest', (req, res) => {
     res.sendFile(__dirname + "/assets/guest_register.html");
 });
 
+app.get('/register/owner', (req, res) => {
+    res.sendFile(__dirname + "/assets/owner_register.html");
+});
+
 app.listen(process.env.PORT, () => {
     console.log(`Example app listening on port ${process.env.PORT}`);
 });

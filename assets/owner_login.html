@@ -94,7 +94,7 @@
               <button
                 type="button"
                 class="btn btn-outline-sparta btn-block"
-                onclick="window.location.href='/register.html'"
+                onclick="window.location.replace('/register/owner')"
               >
                 회원가입
               </button>
@@ -161,8 +161,8 @@
     <script>
       if (localStorage.getItem("token")) {
         // getSelf(function () {
-          alert("이미 로그인이 되어있습니다. 세탁 페이지로 이동합니다.");
-          window.location.replace("/");
+        alert("이미 로그인이 되어있습니다. 세탁 페이지로 이동합니다.");
+        window.location.replace("/");
         // });
       }
 
@@ -174,11 +174,11 @@
           url: "/api/login/owner",
           dataType: "JSON",
           data: {
-            "login_id": login_id,
-            "login_pw": login_pw,
+            login_id: login_id,
+            login_pw: login_pw,
           },
           success: function (response) {
-            console.log(response)
+            console.log(response);
             localStorage.setItem("token", JSON.stringify(response));
             window.location.replace("/");
           },
