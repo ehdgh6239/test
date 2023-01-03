@@ -156,9 +156,12 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="/api.js"></script>
+    <!-- <script src="../routers/mypage.js"></script>
+    <script src="../middlewares/auth-middleware"></script> -->
+    
 
     <script>
+      
       if (localStorage.getItem("token")) {
         // getSelf(function () {
           alert("이미 로그인이 되어있습니다. 세탁 페이지로 이동합니다.");
@@ -166,7 +169,9 @@
         // });
       }
 
+
       function sign_in() {
+        
         let login_id = $("#inputEmail").val();
         console.log(login_id);
         console.log(typeof login_id);
@@ -184,7 +189,7 @@
           success: function (response) {
             console.log(response)
             localStorage.setItem("token", JSON.stringify(response));
-            window.location.replace("/");
+            window.location.replace(`/mypage/guest?login_id=${login_id}`);
           },
           error: function (error) {
             customAlert(error.responseJSON.errorMessage);

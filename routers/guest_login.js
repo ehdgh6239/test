@@ -16,7 +16,7 @@ router.post("/login/guest", async (req, res) => {
       where: { login_id },
     });
 
-    console.log(guest);
+    // console.log(guest);
 
     if (!guest || guest.login_pw !== login_pw) {
       return res

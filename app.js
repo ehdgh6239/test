@@ -5,6 +5,8 @@ const guestRegisterRouter = require("./routers/guest_register");
 const ownerRegisterRouter = require("./routers/owner_register");
 const guestLoginRouter = require("./routers/guest_login");
 const ownerLoginRouter = require("./routers/owner_login");
+const guestMypageRouter = require("./routers/mypage");
+
 // const ownerRegisterRouter = require("./routers/owner_register");
 
 app.use(express.json());
@@ -15,7 +17,8 @@ app.use("/api", express.urlencoded({extended: false}), [
     guestRegisterRouter,
     ownerRegisterRouter,
     guestLoginRouter,
-    ownerLoginRouter 
+    ownerLoginRouter,
+    guestMypageRouter
   ]);
 
 app.get('/', (req, res) => {
@@ -38,6 +41,13 @@ app.get('/register/guest', (req, res) => {
 
 app.get('/register/owner', (req, res) => {
     res.sendFile(__dirname + "/assets/owner_register.html");
+});
+
+app.get('/mypage/guest', (req, res) => {
+    res.sendFile(__dirname + "/assets/guest_mypage.html");
+});
+app.get('/mypage/owner', (req, res) => {
+    res.sendFile(__dirname + "/assets/owner_mypage.html");
 });
 
 app.listen(process.env.PORT, () => {
