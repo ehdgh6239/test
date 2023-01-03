@@ -180,7 +180,7 @@
           success: function (response) {
             console.log(response);
             localStorage.setItem("token", JSON.stringify(response));
-            window.location.replace("/");
+            window.location.replace(`/mypage/owner?login_id=${login_id}`);
           },
           error: function (error) {
             customAlert(error.responseJSON.errorMessage);
