@@ -4,6 +4,7 @@ const router = express.Router();
 const { Owner } = require("../models");
 const jwt = require("jsonwebtoken");
 const SECRET_KEY = "1234";
+const bcrypt = require('bcrypt');
 
 const app = express();
 app.use(cookieParser());
@@ -16,7 +17,8 @@ router.post("/login/owner", async (req, res) => {
       where: { login_id },
     });
 
-    if (!owner || owner.login_pw !== login_pw) {
+    const pwCheck = await bcrypt.compare(login_pw,owner.login_pw);
+    if (!owner || !pwCheck) {
       return res
         .status(412)
         .send({ errorMessage: "닉네임 또는 패스워드를 확인해주세요." });

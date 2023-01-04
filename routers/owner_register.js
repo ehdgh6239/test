@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {Op} = require('sequelize');
 const {Owner} = require('../models');
+const bcrypt = require('bcrypt');
 
 router.post('/register/owner', async (req, res) => {
     const {login_id, login_pw, owner_name, owner_email, confirmpw} = req.body;
@@ -24,6 +25,7 @@ router.post('/register/owner', async (req, res) => {
             return res.status(412).send({"errorMessage": "패스워드가 일치하지 않습니다."})
         }
 
+        const hashedPassword = await bcrypt.hash(login_pw,10);
         const existOwner = await Owner.findAll({
             where: {owner_name: owner_name}
         })
@@ -37,7 +39,7 @@ router.post('/register/owner', async (req, res) => {
 
         await Owner.create({
             login_id, 
-            login_pw, 
+            login_pw : hashedPassword, 
             owner_name, 
             owner_email,
             owner_point,
