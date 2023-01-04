@@ -11,7 +11,7 @@ app.use(cookieParser());
 
 
 
-router.get('/mypage/guest', async (req, res) => {
+    router.get('/mypage/guest', async (req, res) => {
     const  guestId =  String( req.query.login_id )
 
     // const guestName = res.locals.guest.login_id
