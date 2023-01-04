@@ -7,7 +7,7 @@ const {Cloth} = require('../models');
 router.get('/order/owner', async(req,res) =>{
     try {
         const cloth = await Cloth.findAll({where: {owner_id : null}});
-
+        // const name = await Guest.findAll({where: {guest_name : guest_name}})
 
         // 오류 예제
         // try catch 있을때/없을때
