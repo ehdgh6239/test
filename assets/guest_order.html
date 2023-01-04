@@ -28,9 +28,9 @@ nav{display:block; float:left;}
   <h1 style="position:absolute; top:100px; text-align:center;">🧺세탁물 상태페이지🧺</h1>
   <form action="" method="">
     <nav class="input-table">
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">닉네임</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="닉네임" aria-describedby="emailHelp">
+      <div class="mb-3" id="nickName">
+        <!-- <label for="exampleInputEmail1" class="form-label">닉네임</label> -->
+        <!-- <input type="email" class="form-control" id="exampleInputEmail1" placeholder="닉네임" aria-describedby="emailHelp"> -->
       </div>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">전화번호</label>
@@ -97,12 +97,15 @@ function readURL(input) {
     const url_split = url.split('=')
     const login_id = url_split[1]
     console.log(login_id);
+    getOwnerName(login_id);
+
+
 
 function save_order() {
         const tel = $("#exampleInputEmail2").val();
         const address = $("#exampleInputEmail3").val();
         const ask = $("#exampleInputEmail4").val();
-        
+        const status = "대기중"
 
         $.ajax({
           type: "POST",
@@ -111,6 +114,8 @@ function save_order() {
             tel : tel,
             address : address,
             ask : ask,
+            status : status,
+            guest_id : guest_id 
           },
           success: function (response) {
             alert(JSON.stringify(response))
@@ -123,6 +128,27 @@ function save_order() {
         });
       };
 
+      function getOwnerName(login_id) {
+  $.ajax({
+    type: "GET",
+    url: `/api/order/guest?login_id=${login_id}`,
+    // headers: {
+    //   authorization: `Bearer ${localStorage.getItem("token")}`,
+    // },
+    success: function (response) {
+
+      window.guest_id = String(response.guestPk);
+      
+
+      let temp_html = `<label for="exampleInputEmail1" class="form-label">닉네임: ${response.guestName}</label>`
+      $('#nickName').append(temp_html)
+    // callback(response);
+    },
+    error: function (error) {
+            customAlert(error.responseJSON.errorMessage);
+          },
+  });};
+
       function customAlert(text, confirmCallback) {
         $("#alertText").text(text);
         $("#alertModal").modal("show");
@@ -130,5 +156,6 @@ function save_order() {
           $("#alertModal .btn-confirm").click(confirmCallback);
         }
       }
+
 </script>
 </html>
