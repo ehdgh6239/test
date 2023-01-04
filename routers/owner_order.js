@@ -1,13 +1,23 @@
-router.get('/order/guest', async(req,res) =>{
+const express = require('express');
+const router = express.Router();
+const {Op} = require('sequelize');
+const {Guest} = require('../models');
+const {Cloth} = require('../models');
+
+router.get('/order/owner', async(req,res) =>{
     try {
-        const user = await Cloth.findAll();
+        const cloth = await Cloth.findAll({where: {owner_id : null}});
+
+
         // 오류 예제
         // try catch 있을때/없을때
         // const posts = await NonexistentCollection.find({});
     
-        res.send(user);
+        return res.send({"cloth" : cloth});
       } catch (error) {
         console.error(error);
-        res.status(500).send({ message: error.message });
+        return res.status(500).send({ message: error.message });
       }
     }); 
+
+module.exports = router;

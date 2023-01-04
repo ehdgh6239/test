@@ -8,7 +8,9 @@ const ownerLoginRouter = require("./routers/owner_login");
 const guestMypageRouter = require("./routers/guest_mypage");
 const ownerMypageRouter = require("./routers/owner_mypage");
 const ownerStatusRouter = require("./routers/laundry_status");
+const guestStatusRouter = require("./routers/guest_order_status");
 const guestOrderRouter = require("./routers/guest_order");
+const ownerOrderRouter = require("./routers/owner_order");
 
 // const ownerRegisterRouter = require("./routers/owner_register");
 
@@ -24,7 +26,9 @@ app.use("/api", express.urlencoded({extended: false}), [
     guestMypageRouter,
     ownerMypageRouter,
     ownerStatusRouter,
-    guestOrderRouter
+    guestOrderRouter,
+    ownerOrderRouter,
+    guestStatusRouter
   ]);
 
 app.get('/', (req, res) => {

@@ -217,25 +217,35 @@ ul {
 </div>
     <script>
         <!-- 모달창 처리 시작 -->
-        $('#myModal').on('shown.bs.modal', function () {
-          $('#myInput').trigger('focus')
-        })
+        // $('#myModal').on('shown.bs.modal', function () {
+        //   $('#myInput').trigger('focus')
+        // })
         // <!-- 모달창 처리 끝-->//
+
+        const url = window.location.search;
+    console.log(url)
+    const url_split = url.split('=')
+    const login_id = url_split[1]
+    console.log(login_id);
+
         function show_order(){
             $.ajax({
                 type: "GET",
-                url: "/api/order/guest",
+                url: `/api/order/owner?login_id=${login_id}`,
                 data: {},
                 success: function (response) {
-                    let rows = response['Cloth']
+                    console.log(response)
+                    let rows = response['cloth']
+                    console.log(row)
                     for (let i =0; i < rows.length; i++){
-                        let tel = rows[i]['tel']
+                        let tel = rows[i][3]
                         let address = rows[i]['address']
-                        let cloth_id = rows[i]['cloth_id']
+                        let img = rows[i]['img']
+                        let ask = rows[i]['ask']
+                        
                         let temp_html = ``
                         if (cloth_id == 0){
-                            temp_html = `
-                            <div>
+                            temp_html =  `
         <div class="test">
             <h1>닉네임</h1>
         </div>
@@ -267,6 +277,7 @@ ul {
                                     <h1>${name}</h1>
                                     <p>${tel}</p>
                                     <p>${address}</p>
+                                    <p>${img}</p>
                                     <p>${ask}</p>
                                 </div>
                             </div>
@@ -277,8 +288,7 @@ ul {
                     </div>
                 </div>
             </div>  
-        </div>      
-    </div>`
+        </div>`
                         }
                         $('#bucket-list').append(temp_html)
                     }

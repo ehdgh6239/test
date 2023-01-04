@@ -9,6 +9,18 @@ router.post('/order/guest',async (req, res) => {
         const { tel, address, ask, status, guest_id } = req.body;
        
         await Cloth.create({ tel,address,ask, status, guest_id});
+
+        const guest = await Guest.findOne({where : {guest_id : guest_id}});
+
+        if (guest.guest_point < 10000) {
+          return res.status(412).send({"errorMessage": "마이포인트가 부족합니다!"})
+      }
+
+        const usePoint = 10000
+
+        const updatePoint = guest.guest_point - usePoint
+
+        await guest.update( {guest_point : updatePoint});
         
         res.status(201).send({"massage" : "세탁을 신청했습니다!"});
    
